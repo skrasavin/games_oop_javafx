@@ -13,10 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import ru.job4j.chess.firuges.Cell;
-import ru.job4j.chess.firuges.Figure;
-import ru.job4j.chess.firuges.black.*;
-import ru.job4j.chess.firuges.white.*;
+import ru.job4j.chess.figures.Cell;
+import ru.job4j.chess.figures.Figure;
+import ru.job4j.chess.figures.black.*;
+import ru.job4j.chess.figures.white.*;
 
 public final class Chess extends Application {
     private static final String JOB4J = "Шахматы на www.job4j.ru";
@@ -121,6 +121,45 @@ public final class Chess extends Application {
     }
 
     private void buildBlackTeam(Group grid) {
+        add(new PawnBlack(Cell.A2), grid);
+        add(new PawnBlack(Cell.B2), grid);
+        add(new PawnBlack(Cell.C2), grid);
+        add(new PawnBlack(Cell.D2), grid);
+        add(new PawnBlack(Cell.E2), grid);
+        add(new PawnBlack(Cell.F2), grid);
+        add(new PawnBlack(Cell.G2), grid);
+        add(new PawnBlack(Cell.H2), grid);
+        add(new RookBlack(Cell.A1), grid);
+        add(new KnightBlack(Cell.B1), grid);
+        add(new BishopBlack(Cell.C1), grid);
+        add(new QueenBlack(Cell.D1), grid);
+        add(new KingBlack(Cell.E1), grid);
+        add(new BishopBlack(Cell.F1), grid);
+        add(new KnightBlack(Cell.G1), grid);
+        add(new RookBlack(Cell.H1), grid);
+    }
+
+    public void buildWhiteTeam(Group grid) {
+        add(new PawnWhite(Cell.A7), grid);
+        add(new PawnWhite(Cell.B7), grid);
+        add(new PawnWhite(Cell.C7), grid);
+        add(new PawnWhite(Cell.D7), grid);
+        add(new PawnWhite(Cell.E7), grid);
+        add(new PawnWhite(Cell.F7), grid);
+        add(new PawnWhite(Cell.G7), grid);
+        add(new PawnWhite(Cell.H7), grid);
+        add(new RookWhite(Cell.A8), grid);
+        add(new KnightWhite(Cell.B8), grid);
+        add(new BishopWhite(Cell.C8), grid);
+        add(new QueenWhite(Cell.D8), grid);
+        add(new KingWhite(Cell.E8), grid);
+        add(new BishopWhite(Cell.F8), grid);
+        add(new KnightWhite(Cell.G8), grid);
+        add(new RookWhite(Cell.H8), grid);
+    }
+    /*
+
+        private void buildBlackTeam(Group grid) {
         add(new PawnBlack(Cell.A7), grid);
         add(new PawnBlack(Cell.B7), grid);
         add(new PawnBlack(Cell.C7), grid);
@@ -156,7 +195,7 @@ public final class Chess extends Application {
         add(new BishopWhite(Cell.F1), grid);
         add(new KnightWhite(Cell.G1), grid);
         add(new RookWhite(Cell.H1), grid);
-    }
+     */
 
     public void add(Figure figure, Group grid) {
         logic.add(figure);

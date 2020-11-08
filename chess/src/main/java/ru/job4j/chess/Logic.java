@@ -1,7 +1,7 @@
 package ru.job4j.chess;
 
-import ru.job4j.chess.firuges.Cell;
-import ru.job4j.chess.firuges.Figure;
+import ru.job4j.chess.figures.Cell;
+import ru.job4j.chess.figures.Figure;
 import java.util.Arrays;
 
 public final class Logic {
@@ -21,6 +21,13 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        for (Cell step : steps) {
+            for (Figure figure : figures) {
+                if (figure.position().equals(step)) {
+                    throw new OccupiedCellException();
+                }
+            }
+        }
         return true;
     }
 
@@ -30,7 +37,7 @@ public final class Logic {
     }
 
     private int findBy(Cell cell) throws FigureNotFoundException {
-        for (int index = 0; index != figures.length; index++) {
+        for (int index = 0; index != figures.length-1; index++) {
             Figure figure = figures[index];
             if (figure != null && figure.position().equals(cell)) {
                 return index;
