@@ -22,42 +22,19 @@ public class LogicTest {
         logic.move(Cell.C1, Cell.G5);
     }
 
-    @Test
-    public void testLogicWithOccupiedCellException() throws FigureNotFoundException, ImpossibleMoveException {
+    @Test(expected = OccupiedCellException.class)
+    public void testLogicWithOccupiedCellException() throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
         Logic logic = new Logic();
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         Figure bishopBl = new BishopBlack(Cell.D2);
         logic.add(bishopBlack);
         logic.add(bishopBl);
-        OccupiedCellException exception = new OccupiedCellException();
-        Exception newException = null;
-        try {
-            logic.move(Cell.C1, Cell.G5);
-        }catch (OccupiedCellException e) {
-            newException = e;
-        }
-        assertThat(exception.getClass(), is(newException.getClass()));
+        logic.move(Cell.C1, Cell.G5);
     }
 
-    private void assertThat(Class<? extends OccupiedCellException> aClass, Matcher<? extends Exception> matcher) {
-    }
-
-    @Test
+    @Test(expected = FigureNotFoundException.class)
     public void testLogicWithFigureNotFound() throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        FigureNotFoundException exception = new FigureNotFoundException();
-        Exception newException = null;
-        try {
-            logic.move(Cell.C4, Cell.G5);
-        }catch (FigureNotFoundException e) {
-            newException = e;
-        }
-        assertThat1(exception.getClass(), is(newException.getClass()));
+        logic.move(Cell.C4, Cell.G5);
     }
-
-    private void assertThat1(Class<? extends FigureNotFoundException> aClass, Matcher<? extends Exception> matcher) {
-    }
-
-
-
 }
